@@ -1,1 +1,1 @@
-descripcion de la pagina
+estamos trabajando una plantilla para hacer mi página personal amigos
