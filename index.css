@@ -31,6 +31,7 @@
     }
     
     h1{
+        text-align: end;
         font-weight: 600;
         font-size: 3em;
     }
