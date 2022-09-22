@@ -6,7 +6,7 @@
         font-family: Arial, Helvetica, sans-serif;
         color: rgba(255, 255, 255, 0.459);
        background-size: 100%;
-        background-color: rgb(19, 18, 18);
+        background-color: rgb(15, 15, 15);
         padding-bottom: 10em;
         
     }
@@ -38,7 +38,7 @@
     
     .banner{
         width: 100%;
-        height: 800px;
+        height: 850px;
         display: flex;
         align-items: center;
         text-align: center;
@@ -64,29 +64,37 @@
     
     }
     
-    .texto
-    {
-        height: 300px;
-        background: rgba(255, 255, 255, 0.342);
-     
-    }
-    .textoD
-    {
-       color: #fff;
-      position:fixed
-        top: 50%;
-        left: 50%;
-        
-    }
-    
-    .banner2{
+    .bannerz{
         width: 100%;
         height: 200px;
         display: flex;
         align-items: center;
-        background: fixed no-repeat url(images/pic14.jpeg);
+        text-align: center;
+        background-color: rgb(18, 15, 153);
+        background-size: 200%;
+        
+    
+    }
+    
+    .banner_descriptionz{
+        text-align: center;
+        width: 90%;
+        max-width: 1000px;
+        display: block;
+        margin: auto;
+        margin-top: 80px;
+    
+    }
+    
+    
+    .banner2{
+        width: 100%;
+        height: 800px;
+        display: flex;
+        align-items: center;
+        background: fixed no-repeat url(images/edit.jpg);
         background-size: 100%;
-        background-position: 100px;
+        
     }
     
     .banner_description2{
@@ -103,12 +111,31 @@
     .banner3{
         width: 100%;
         background: yellow;
-        height: 600px;
+        height: 200px;
         display: flex;
         align-items: center;
         background-color: blue;
     }
     .banner_description3{
+    
+        color: rgb(255, 255, 255);
+        width: 90%;
+        max-width: 1000px;
+        display: block;
+        text-align: end;
+       
+        
+    
+    }
+    .banner4{
+        width: 100%;
+        background: yellow;
+        height: 600px;
+        display: flex;
+        align-items: center;
+        background-color: rgb(0, 0, 0);
+    }
+    .banner_description4{
     
         color: rgb(255, 255, 255);
         width: 90%;
