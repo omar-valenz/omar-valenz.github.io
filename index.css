@@ -7,7 +7,7 @@
         color: rgba(255, 255, 255, 0.459);
        background-size: 200%;
         background-color: rgb(0, 0, 0);
-        padding-bottom: 1000em;
+        padding-bottom: 100em;
         
     }
         p{opacity: 0.7;
@@ -38,7 +38,7 @@
     
     .banner{
         width: 100%;
-        height: 600px;
+        height: 800px;
         display: flex;
         align-items: center;
         text-align: center;
@@ -60,14 +60,14 @@
         max-width: 1000px;
         display: block;
         margin: auto;
-        margin-top: 420px;
+        margin-top: 520px;
     
     }
     
     .texto
     {
         height: 300px;
-        background: rgb(255, 0, 0);
+        background: rgba(255, 255, 255, 0.342);
      
     }
     .textoD
@@ -81,12 +81,12 @@
     
     .banner2{
         width: 100%;
-        background: yellow;
         height: 200px;
         display: flex;
         align-items: center;
-        background: fixed  url("https://img.freepik.com/vector-gratis/movimiento-ligero-fondo-pantalla-estilo-abstracto_23-2148343964.jpg?w=1380") ;
-       
+        background: fixed no-repeat url(images/pic14.jpeg);
+        background-size: 100%;
+        background-position: 100px;
     }
     
     .banner_description2{
