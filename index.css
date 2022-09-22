@@ -4,7 +4,7 @@
     
     body{
         font-family: Arial, Helvetica, sans-serif;
-        color: rgba(255, 255, 255, 0.459);
+        color: rgba(255, 255, 255, 0.37);
        background-size: 100%;
         background-color: rgb(15, 15, 15);
         padding-bottom: 10em;
@@ -31,6 +31,7 @@
     }
     
     h1{
+        opacity: 0.9;
         text-align: center;
         font-weight: 600;
         font-size: 2em;
@@ -82,7 +83,7 @@
         max-width: 1000px;
         display: block;
         margin: auto;
-        margin-top: 80px;
+        margin-top: 120px;
     
     }
     
@@ -105,13 +106,13 @@
         display: block;
         text-align: right ;
         margin-top: 65%;
-       
+        margin-top: 300px;
         
     
     }
     .banner3{
         width: 100%;
-        background: rgb(140, 0, 255);
+        background: rgba(224, 192, 6, 0.918);
         height: 200px;
         display: flex;
         align-items: center;
@@ -123,6 +124,8 @@
         max-width: 1000px;
         display: block;
         text-align: end;
+        margin-top: 90px;
+    
        
         
     
@@ -130,7 +133,7 @@
     .banner4{
         width: 100%;
         background: yellow;
-        height: 600px;
+        height: 800px;
         display: flex;
         align-items: center;
         background-color: rgb(0, 0, 0);
@@ -145,7 +148,55 @@
         max-width: 1000px;
         display: block;
         text-align: end;
+        margin-top: -200px;
        
         
     
     }
+
+.banner5{
+    width: 100%;
+    background: yellow;
+    height: 200px;
+    display: flex;
+    align-items: center;
+    background-color: rgb(192, 148, 51);
+  
+}
+.banner_description5{
+
+    color: rgb(255, 255, 255);
+    width: 90%;
+    max-width: 1000px;
+    display: block;
+    text-align: end;
+    margin-top: 90px;
+   
+    
+
+}
+
+.banner6{
+    width: 100%;
+    background: rgb(255, 145, 0);
+    height: 800px;
+    display: flex;
+    align-items: center;
+    background-color: rgb(0, 0, 0);
+    background: fixed no-repeat url(images/sp.jpg);
+    background-position: -700px -150px ;
+    
+    
+}
+.banner_description6{
+    margin-top: -370px;
+    color: rgb(255, 255, 255);
+    width: 90%;
+    max-width: 1000px;
+    display: block;
+    text-align: right;
+    
+   
+    
+
+}
