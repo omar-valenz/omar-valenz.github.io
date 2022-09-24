@@ -44,7 +44,8 @@
         align-items: center;
         text-align: center;
         background: fixed no-repeat url("https://drive.google.com/uc?export=download&id=1ccjsg43IRLOP0t11Fz5vyo6YhVEayoW2") ;
-        background-size: 200%;
+        background-size: 280%;
+    background-position: 12% -30%;
         
     
     }
@@ -61,7 +62,7 @@
         max-width: 1000px;
         display: block;
         margin: auto;
-        margin-top: 550px;
+        margin-top: 530px;
     
     }
     
