@@ -199,17 +199,61 @@
     max-width: 1000px;
     display: block;
     text-align: right;
-    .final{
-        margin-top: -370px;
-        color: rgb(255, 255, 255);
+}
+.banner7{
+    width: 100%;
+    background: rgb(255, 145, 0);
+    height: 200px;
+    display: flex;
+    align-items: center;
+    background-color: rgb(209, 19, 19);
+   
+    background-position: -900px -150px ;
+    
+    
+}
+.banner_description7{
+    margin-top:40px;
+    color: rgb(255, 255, 255);
+    width: 90%;
+    max-width: 1000px;
+    display: block;
+    text-align: right;
+    
+}
+.banner8{
+    width: 100%;
+  
+    height: 600px;
+    display: flex;
+    align-items: center;
+    background-color: rgb(0, 0, 0);
+    background: fixed no-repeat url(images/store.jpg);
+    background-position: -450px 300px ;
+    
+    
+}
+.banner_description8{
+    margin-top: -370px;
+    color: rgb(255, 255, 255);
+    width: 90%;
+    max-width: 1000px;
+    display: block;
+    text-align: right;
+}
+.final{
+    background-color: rgba(0, 0, 0, 0);
+        height: 5px;
+        color: rgba(255, 255, 255, 0.719);
         width: 90%;
         max-width: 1000px;
         display: block;
-        text-align: right;
+        text-align: center;
    
     
 
 }
+
 
 @media (min-width: 600px) {
     .banner{
