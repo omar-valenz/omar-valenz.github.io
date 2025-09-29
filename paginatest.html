@@ -1,47 +1,39 @@
 <!doctype html>
-
-
-@media(max-width:700px){
-nav{display:none;flex-direction:column;gap:10px;margin-top:10px}
-nav.show{display:flex}
-.menu-btn{display:block}
-}
-</style>
-</head>
-<body>
-<header>
-<div class="logo">Mi Sitio</div>
-<nav id="menu">
-<a href="#inicio">Inicio</a>
-<a href="#features">Características</a>
-<a href="#contact">Contacto</a>
-</nav>
-<button class="menu-btn" id="menuBtn">☰</button>
-</header>
-
-
-<!-- Primer slider arriba del texto -->
-<div class="slider" id="sliderTop">
-<img class="slide active" src="https://picsum.photos/1200/280?random=1" alt="imagen random 1">
-<img class="slide" src="https://picsum.photos/1200/280?random=2" alt="imagen random 2">
-<img class="slide" src="https://picsum.photos/1200/280?random=3" alt="imagen random 3">
+<img class="slide active" src="https://picsum.photos/1200/560?random=1" alt="imagen random 1">
+<img class="slide" src="https://picsum.photos/1200/560?random=2" alt="imagen random 2">
+<img class="slide" src="https://picsum.photos/1200/560?random=3" alt="imagen random 3">
 </div>
 
 
-<main class="center">
+<!-- Segundo slider con texto enter encima -->
+<div class="slider" id="sliderMiddle">
+<img class="slide active" src="https://picsum.photos/1200/560?random=4" alt="imagen random 4">
+<img class="slide" src="https://picsum.photos/1200/560?random=5" alt="imagen random 5">
+<img class="slide" src="https://picsum.photos/1200/560?random=6" alt="imagen random 6">
+<div class="center">
 <button class="enter" id="enterBtn" aria-label="Presiona Enter para continuar">enter</button>
-</main>
+</div>
+</div>
 
 
-<!-- Segundo slider abajo del texto -->
+<!-- Tercer slider -->
 <div class="slider" id="sliderBottom">
-<img class="slide active" src="https://picsum.photos/1200/280?random=4" alt="imagen random 4">
-<img class="slide" src="https://picsum.photos/1200/280?random=5" alt="imagen random 5">
-<img class="slide" src="https://picsum.photos/1200/280?random=6" alt="imagen random 6">
+<img class="slide active" src="https://picsum.photos/1200/560?random=7" alt="imagen random 7">
+<img class="slide" src="https://picsum.photos/1200/560?random=8" alt="imagen random 8">
+<img class="slide" src="https://picsum.photos/1200/560?random=9" alt="imagen random 9">
+</div>
 </div>
 
 
 <script>
+// Mostrar página después de animación
+setTimeout(()=>{
+document.getElementById('introCircle').style.display='none';
+document.getElementById('pageContent').classList.remove('hidden');
+document.body.style.background='#000';
+},3000);
+
+
 const btn=document.getElementById('enterBtn');
 btn.addEventListener('click',()=>{
 btn.style.opacity='0.3';
@@ -72,8 +64,9 @@ slides[current].classList.add('active');
 }
 
 
-// Inicializar ambos sliders
+// Inicializar los tres sliders
 setupSlider('sliderTop');
+setupSlider('sliderMiddle');
 setupSlider('sliderBottom');
 </script>
 </body>
