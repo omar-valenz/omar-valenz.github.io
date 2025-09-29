@@ -3,11 +3,10 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>Enter — Minimal con Menú y Slider</title>
+  <title>Enter — Minimal con Dos Sliders</title>
   <style>
     body{
       margin:0;
-      height:100vh;
       background:#000;
       color:#fff;
       font-family:Inter,system-ui,Roboto,Arial,sans-serif;
@@ -37,6 +36,7 @@
       height:280px;
       overflow:hidden;
       background:#111;
+      margin-bottom:20px;
     }
     .slide{
       position:absolute;
@@ -49,7 +49,7 @@
     .slide.active{opacity:1}
 
     .center{
-      flex:1;display:grid;place-items:center;text-align:center
+      display:grid;place-items:center;text-align:center;margin:20px 0;
     }
     .enter{
       font-size:clamp(2.5rem,10vw,6rem);
@@ -70,7 +70,6 @@
       50%{opacity:0.6;transform:scale(1.05)}
     }
 
-    /* responsive */
     @media(max-width:700px){
       nav{display:none;flex-direction:column;gap:10px;margin-top:10px}
       nav.show{display:flex}
@@ -89,7 +88,8 @@
     <button class="menu-btn" id="menuBtn">☰</button>
   </header>
 
-  <div class="slider" id="slider">
+  <!-- Primer slider arriba del texto -->
+  <div class="slider" id="sliderTop">
     <img class="slide active" src="https://picsum.photos/1200/280?random=1" alt="imagen random 1">
     <img class="slide" src="https://picsum.photos/1200/280?random=2" alt="imagen random 2">
     <img class="slide" src="https://picsum.photos/1200/280?random=3" alt="imagen random 3">
@@ -98,6 +98,13 @@
   <main class="center">
     <button class="enter" id="enterBtn" aria-label="Presiona Enter para continuar">enter</button>
   </main>
+
+  <!-- Segundo slider abajo del texto -->
+  <div class="slider" id="sliderBottom">
+    <img class="slide active" src="https://picsum.photos/1200/280?random=4" alt="imagen random 4">
+    <img class="slide" src="https://picsum.photos/1200/280?random=5" alt="imagen random 5">
+    <img class="slide" src="https://picsum.photos/1200/280?random=6" alt="imagen random 6">
+  </div>
 
   <script>
     const btn=document.getElementById('enterBtn');
@@ -115,14 +122,21 @@
       menu.classList.toggle('show');
     });
 
-    // slider automático
-    const slides=document.querySelectorAll('.slide');
-    let current=0;
-    setInterval(()=>{
-      slides[current].classList.remove('active');
-      current=(current+1)%slides.length;
-      slides[current].classList.add('active');
-    },3000);
+    // Función para slider automático
+    function setupSlider(sliderId){
+      const slider=document.getElementById(sliderId);
+      const slides=slider.querySelectorAll('.slide');
+      let current=0;
+      setInterval(()=>{
+        slides[current].classList.remove('active');
+        current=(current+1)%slides.length;
+        slides[current].classList.add('active');
+      },3000);
+    }
+
+    // Inicializar ambos sliders
+    setupSlider('sliderTop');
+    setupSlider('sliderBottom');
   </script>
 </body>
 </html>
