@@ -1,73 +1,204 @@
 <!doctype html>
-<img class="slide active" src="https://picsum.photos/1200/560?random=1" alt="imagen random 1">
-<img class="slide" src="https://picsum.photos/1200/560?random=2" alt="imagen random 2">
-<img class="slide" src="https://picsum.photos/1200/560?random=3" alt="imagen random 3">
-</div>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Enter — Minimal con Tres Sliders y Animación Inicial</title>
+  <style>
+    * { box-sizing: border-box; }
+    body, html{
+      margin:0;
+      padding:0;
+      background:#fff; /* fondo inicial blanco */
+      color:#fff;
+      font-family:Inter,system-ui,Roboto,Arial,sans-serif;
+      width:100%;
+      display:flex;
+      flex-direction:column;
+      overflow-x:hidden;
+    }
 
+    /* Animación inicial */
+    #introCircle {
+      position:fixed;
+      top:50%;
+      left:50%;
+      width:50px;
+      height:50px;
+      background:black;
+      border-radius:50%;
+      transform:translate(-50%, -50%) scale(0);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-weight:bold;
+      font-size:1rem;
+      color:white;
+      animation:circleExpand 3s forwards;
+      z-index:9999;
+    }
 
-<!-- Segundo slider con texto enter encima -->
-<div class="slider" id="sliderMiddle">
-<img class="slide active" src="https://picsum.photos/1200/560?random=4" alt="imagen random 4">
-<img class="slide" src="https://picsum.photos/1200/560?random=5" alt="imagen random 5">
-<img class="slide" src="https://picsum.photos/1200/560?random=6" alt="imagen random 6">
-<div class="center">
-<button class="enter" id="enterBtn" aria-label="Presiona Enter para continuar">enter</button>
-</div>
-</div>
+    @keyframes circleExpand {
+      0% { transform:translate(-50%, -50%) scale(0); opacity:1; }
+      50% { transform:translate(-50%, -50%) scale(10); opacity:1; }
+      100% { transform:translate(-50%, -50%) scale(20); opacity:0; }
+    }
 
+    .hidden{
+      display:none;
+    }
 
-<!-- Tercer slider -->
-<div class="slider" id="sliderBottom">
-<img class="slide active" src="https://picsum.photos/1200/560?random=7" alt="imagen random 7">
-<img class="slide" src="https://picsum.photos/1200/560?random=8" alt="imagen random 8">
-<img class="slide" src="https://picsum.photos/1200/560?random=9" alt="imagen random 9">
-</div>
-</div>
+    header{
+      position:absolute;
+      top:0;
+      left:0;
+      width:100%;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      padding:1rem 1.25rem;
+      background:rgba(0,0,0,0.5);
+      border-bottom:1px solid rgba(255,255,255,0.1);
+      z-index:100;
+    }
+    .logo a{color:#fff; text-decoration:none; font-weight:700; font-size:1.2rem;}
+    nav{display:flex;gap:1rem}
+    nav a{color:#fff;text-decoration:none;font-weight:500}
+    nav a:hover{text-decoration:underline}
 
+    .menu-btn{display:none;font-size:1.5rem;background:none;border:none;color:#fff;cursor:pointer}
 
-<script>
-// Mostrar página después de animación
-setTimeout(()=>{
-document.getElementById('introCircle').style.display='none';
-document.getElementById('pageContent').classList.remove('hidden');
-document.body.style.background='#000';
-},3000);
+    .slider{
+      position:relative;
+      width:100%;
+      height:50vh;
+      max-height:800px;
+      overflow:hidden;
+      background:#111;
+    }
+    .slide{
+      position:absolute;
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      opacity:0;
+      transition:opacity 1s ease;
+    }
+    .slide.active{opacity:1}
 
+    .center{
+      display:grid;place-items:center;text-align:center;
+      position:absolute;
+      top:0;
+      width:100%;
+      height:100%;
+      z-index:50;
+    }
+    .enter{
+      font-size:clamp(2rem,8vw,5rem);
+      font-weight:600;
+      letter-spacing:0.08em;
+      color:#fff;
+      background:none;
+      border:none;
+      cursor:pointer;
+      transition: transform 0.8s ease, opacity 0.8s ease;
+      animation:pulse 2.5s infinite;
+    }
+    .enter:focus{outline:4px solid rgba(255,255,255,0.3);outline-offset:6px}
+    .enter:hover{transform:scale(1.08)}
 
-const btn=document.getElementById('enterBtn');
-btn.addEventListener('click',()=>{
-btn.style.opacity='0.3';
-btn.style.transform='scale(0.95)';
-setTimeout(()=>{location.hash='welcome';},600);
-});
-window.addEventListener('keydown',e=>{if(e.key==='Enter')btn.click();});
+    @keyframes pulse{
+      0%,100%{opacity:1;transform:scale(1)}
+      50%{opacity:0.6;transform:scale(1.05)}
+    }
 
+    @media(max-width:700px){
+      nav{display:none;flex-direction:column;gap:0.625rem;margin-top:0.625rem}
+      nav.show{display:flex}
+      .slider{height:60vh;}
+    }
+  </style>
+</head>
+<body>
+  <!-- Animación de introducción -->
+  <div id="introCircle">Omar Valenz</div>
 
-// toggle menú responsive
-const menuBtn=document.getElementById('menuBtn');
-const menu=document.getElementById('menu');
-menuBtn.addEventListener('click',()=>{
-menu.classList.toggle('show');
-});
+  <div id="pageContent" class="hidden">
+    <header>
+      <div class="logo"><a href="https://omar-valenz.github.io" target="_blank">Mi Sitio</a></div>
+      <nav id="menu">
+        <a href="#inicio">Inicio</a>
+        <a href="https://www.google.com" target="_blank">Características</a>
+        <a href="#contact">Contacto</a>
+      </nav>
+      <button class="menu-btn" id="menuBtn">☰</button>
+    </header>
 
+    <!-- Primer slider -->
+    <div class="slider" id="sliderTop">
+      <img class="slide active" src="https://picsum.photos/1200/560?random=1" alt="imagen random 1">
+      <img class="slide" src="https://picsum.photos/1200/560?random=2" alt="imagen random 2">
+      <img class="slide" src="https://picsum.photos/1200/560?random=3" alt="imagen random 3">
+    </div>
 
-// Función para slider automático
-function setupSlider(sliderId){
-const slider=document.getElementById(sliderId);
-const slides=slider.querySelectorAll('.slide');
-let current=0;
-setInterval(()=>{
-slides[current].classList.remove('active');
-current=(current+1)%slides.length;
-slides[current].classList.add('active');
-},3000);
-}
+    <!-- Segundo slider con texto enter encima -->
+    <div class="slider" id="sliderMiddle">
+      <img class="slide active" src="https://picsum.photos/1200/560?random=4" alt="imagen random 4">
+      <img class="slide" src="https://picsum.photos/1200/560?random=5" alt="imagen random 5">
+      <img class="slide" src="https://picsum.photos/1200/560?random=6" alt="imagen random 6">
+      <div class="center">
+        <button class="enter" id="enterBtn" aria-label="Presiona Enter para continuar">enter</button>
+      </div>
+    </div>
 
+    <!-- Tercer slider -->
+    <div class="slider" id="sliderBottom">
+      <img class="slide active" src="https://picsum.photos/1200/560?random=7" alt="imagen random 7">
+      <img class="slide" src="https://picsum.photos/1200/560?random=8" alt="imagen random 8">
+      <img class="slide" src="https://picsum.photos/1200/560?random=9" alt="imagen random 9">
+    </div>
+  </div>
 
-// Inicializar los tres sliders
-setupSlider('sliderTop');
-setupSlider('sliderMiddle');
-setupSlider('sliderBottom');
-</script>
+  <script>
+    // Mostrar página después de animación
+    setTimeout(()=>{
+      document.getElementById('introCircle').style.display='none';
+      document.getElementById('pageContent').classList.remove('hidden');
+      document.body.style.background='#000';
+    },3000);
+
+    const btn=document.getElementById('enterBtn');
+    btn.addEventListener('click',()=>{
+      btn.style.opacity='0.3';
+      btn.style.transform='scale(0.95)';
+      setTimeout(()=>{location.hash='welcome';},600);
+    });
+    window.addEventListener('keydown',e=>{if(e.key==='Enter')btn.click();});
+
+    // toggle menú responsive
+    const menuBtn=document.getElementById('menuBtn');
+    const menu=document.getElementById('menu');
+    menuBtn.addEventListener('click',()=>{
+      menu.classList.toggle('show');
+    });
+
+    // Función para slider automático
+    function setupSlider(sliderId){
+      const slider=document.getElementById(sliderId);
+      const slides=slider.querySelectorAll('.slide');
+      let current=0;
+      setInterval(()=>{
+        slides[current].classList.remove('active');
+        current=(current+1)%slides.length;
+        slides[current].classList.add('active');
+      },3000);
+    }
+
+    // Inicializar los tres sliders
+    setupSlider('sliderTop');
+    setupSlider('sliderMiddle');
+    setupSlider('sliderBottom');
+  </script>
 </body>
 </html>
