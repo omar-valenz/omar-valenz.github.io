@@ -1,0 +1,80 @@
+<!doctype html>
+
+
+@media(max-width:700px){
+nav{display:none;flex-direction:column;gap:10px;margin-top:10px}
+nav.show{display:flex}
+.menu-btn{display:block}
+}
+</style>
+</head>
+<body>
+<header>
+<div class="logo">Mi Sitio</div>
+<nav id="menu">
+<a href="#inicio">Inicio</a>
+<a href="#features">Características</a>
+<a href="#contact">Contacto</a>
+</nav>
+<button class="menu-btn" id="menuBtn">☰</button>
+</header>
+
+
+<!-- Primer slider arriba del texto -->
+<div class="slider" id="sliderTop">
+<img class="slide active" src="https://picsum.photos/1200/280?random=1" alt="imagen random 1">
+<img class="slide" src="https://picsum.photos/1200/280?random=2" alt="imagen random 2">
+<img class="slide" src="https://picsum.photos/1200/280?random=3" alt="imagen random 3">
+</div>
+
+
+<main class="center">
+<button class="enter" id="enterBtn" aria-label="Presiona Enter para continuar">enter</button>
+</main>
+
+
+<!-- Segundo slider abajo del texto -->
+<div class="slider" id="sliderBottom">
+<img class="slide active" src="https://picsum.photos/1200/280?random=4" alt="imagen random 4">
+<img class="slide" src="https://picsum.photos/1200/280?random=5" alt="imagen random 5">
+<img class="slide" src="https://picsum.photos/1200/280?random=6" alt="imagen random 6">
+</div>
+
+
+<script>
+const btn=document.getElementById('enterBtn');
+btn.addEventListener('click',()=>{
+btn.style.opacity='0.3';
+btn.style.transform='scale(0.95)';
+setTimeout(()=>{location.hash='welcome';},600);
+});
+window.addEventListener('keydown',e=>{if(e.key==='Enter')btn.click();});
+
+
+// toggle menú responsive
+const menuBtn=document.getElementById('menuBtn');
+const menu=document.getElementById('menu');
+menuBtn.addEventListener('click',()=>{
+menu.classList.toggle('show');
+});
+
+
+// Función para slider automático
+function setupSlider(sliderId){
+const slider=document.getElementById(sliderId);
+const slides=slider.querySelectorAll('.slide');
+let current=0;
+setInterval(()=>{
+slides[current].classList.remove('active');
+current=(current+1)%slides.length;
+slides[current].classList.add('active');
+},3000);
+}
+
+
+// Inicializar ambos sliders
+setupSlider('sliderTop');
+setupSlider('sliderBottom');
+</script>
+</body>
+</html>
