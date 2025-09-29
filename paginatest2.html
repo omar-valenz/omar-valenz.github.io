@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Enter — Minimal con Menú y Slider</title>
+  <style>
+    body{
+      margin:0;
+      height:100vh;
+      background:#000;
+      color:#fff;
+      font-family:Inter,system-ui,Roboto,Arial,sans-serif;
+      display:flex;
+      flex-direction:column;
+    }
+
+    header{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      padding:12px 20px;
+      background:#000;
+      border-bottom:1px solid rgba(255,255,255,0.1);
+      z-index:10;
+    }
+    .logo{font-weight:700;font-size:1.2rem}
+    nav{display:flex;gap:16px}
+    nav a{color:#fff;text-decoration:none;font-weight:500}
+    nav a:hover{text-decoration:underline}
+
+    .menu-btn{display:none;font-size:1.5rem;background:none;border:none;color:#fff;cursor:pointer}
+
+    .slider{
+      position:relative;
+      width:100%;
+      height:280px;
+      overflow:hidden;
+      background:#111;
+    }
+    .slide{
+      position:absolute;
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      opacity:0;
+      transition:opacity 1s ease;
+    }
+    .slide.active{opacity:1}
+
+    .center{
+      flex:1;display:grid;place-items:center;text-align:center
+    }
+    .enter{
+      font-size:clamp(2.5rem,10vw,6rem);
+      font-weight:600;
+      letter-spacing:0.08em;
+      color:#fff;
+      background:none;
+      border:none;
+      cursor:pointer;
+      transition: transform 0.8s ease, opacity 0.8s ease;
+      animation:pulse 2.5s infinite;
+    }
+    .enter:focus{outline:4px solid rgba(255,255,255,0.3);outline-offset:6px}
+    .enter:hover{transform:scale(1.08)}
+
+    @keyframes pulse{
+      0%,100%{opacity:1;transform:scale(1)}
+      50%{opacity:0.6;transform:scale(1.05)}
+    }
+
+    /* responsive */
+    @media(max-width:700px){
+      nav{display:none;flex-direction:column;gap:10px;margin-top:10px}
+      nav.show{display:flex}
+      .menu-btn{display:block}
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo">Mi Sitio</div>
+    <nav id="menu">
+      <a href="#inicio">Inicio</a>
+      <a href="#features">Características</a>
+      <a href="#contact">Contacto</a>
+    </nav>
+    <button class="menu-btn" id="menuBtn">☰</button>
+  </header>
+
+  <div class="slider" id="slider">
+    <img class="slide active" src="https://picsum.photos/1200/280?random=1" alt="imagen random 1">
+    <img class="slide" src="https://picsum.photos/1200/280?random=2" alt="imagen random 2">
+    <img class="slide" src="https://picsum.photos/1200/280?random=3" alt="imagen random 3">
+  </div>
+
+  <main class="center">
+    <button class="enter" id="enterBtn" aria-label="Presiona Enter para continuar">enter</button>
+  </main>
+
+  <script>
+    const btn=document.getElementById('enterBtn');
+    btn.addEventListener('click',()=>{
+      btn.style.opacity='0.3';
+      btn.style.transform='scale(0.95)';
+      setTimeout(()=>{location.hash='welcome';},600);
+    });
+    window.addEventListener('keydown',e=>{if(e.key==='Enter')btn.click();});
+
+    // toggle menú responsive
+    const menuBtn=document.getElementById('menuBtn');
+    const menu=document.getElementById('menu');
+    menuBtn.addEventListener('click',()=>{
+      menu.classList.toggle('show');
+    });
+
+    // slider automático
+    const slides=document.querySelectorAll('.slide');
+    let current=0;
+    setInterval(()=>{
+      slides[current].classList.remove('active');
+      current=(current+1)%slides.length;
+      slides[current].classList.add('active');
+    },3000);
+  </script>
+</body>
+</html>
